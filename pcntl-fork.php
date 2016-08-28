@@ -20,9 +20,9 @@ for ($i = 0; $i < 10; $i++) {
 
 function dummy_business()
 {
-    global $host, $user, $password;
+    global $host,$db, $user, $password;
     $conn = mysqli_connect($host, $user, $password) or die(mysqli_error());
-    mysqli_select_db($conn, 'hbd');
+    mysqli_select_db($conn, $db);
     for ($i = 0; $i < 10000; $i++) {
         mysqli_query($conn, 'UPDATE rp_counter SET num = num + 1 WHERE id = 1');
     }
