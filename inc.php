@@ -7,7 +7,7 @@
  */
 
 
-$host = '1';
-$db = 'hbd';
+$host = '127.0.0.1';
+$db = 'test';
 $user = 'root';
-$password = '1';
+$password = 'root';

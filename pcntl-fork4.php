@@ -24,14 +24,7 @@ function dummy_business(){
     mysqli_select_db($conn, $db);
     for ($i = 0; $i < 10000; $i++) {
         mysqli_query($conn, 'BEGIN');
-        $rs = mysqli_query($conn, 'SELECT num FROM rp_counter WHERE id = 1 FOR UPDATE');
-        if($rs == false || mysqli_errno($conn)) {
-            // 回滚事务
-            mysqli_query($conn, 'ROLLBACK');
-            // 重新执行本次操作
-            $i--;
-            continue;
-        }
+        $rs = mysqli_query($conn, 'SELECT num FROM rp_counter WHERE id = 1');
         //mysqli_free_result($rs);
         $row = mysqli_fetch_array($rs);
         $num = $row[0];
