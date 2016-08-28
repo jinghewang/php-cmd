@@ -1,5 +1,7 @@
 <?php
 
+include_once "inc.php";
+
 for ($i = 0; $i < 10; $i++) {
     $pid = pcntl_fork();
 
@@ -15,9 +17,9 @@ for ($i = 0; $i < 10; $i++) {
     }
 }
 
-
  function dummy_business() {
-        $conn = mysqli_connect('127.0.0.1', 'root', 'xxxx') or die(mysqli_error());
+     global $host,$user,$password;
+     $conn = mysqli_connect($host, $user, $password) or die(mysqli_error());
         mysqli_select_db($conn, 'hbd');
         for ($i = 0; $i < 10000; $i++) {
             mysqli_query($conn, 'UPDATE rp_counter SET num = num + 1 WHERE id = 1');
