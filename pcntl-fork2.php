@@ -18,6 +18,9 @@ for ($i = 0; $i < 10; $i++) {
 }
 
 
+/**
+ * 无事务 分步操作【no】
+ */
 function dummy_business(){
     global $host,$db, $user, $password;
     $conn = mysqli_connect($host, $user, $password) or die(mysqli_error());

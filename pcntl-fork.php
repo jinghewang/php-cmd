@@ -18,6 +18,9 @@ for ($i = 0; $i < 10; $i++) {
     }
 }
 
+/**
+ * update 原子操作 【ok】
+ */
 function dummy_business()
 {
     global $host,$db, $user, $password;
