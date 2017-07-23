@@ -9,6 +9,7 @@
 $serv = new swoole_server("127.0.0.1", 9511);
 
 
+
 $serv->on('start', function ($serv){
     echo "start\n";
 });
@@ -16,17 +17,15 @@ $serv->on('start', function ($serv){
 
 $serv->on('connect', function ($serv, $fd){
     echo "Client：connect:$fd\n";
-    $serv->tick(2000, function() use ($serv, $fd) {
+    foreach ($serv->connections as $tempFD) {
+        $serv->send($tempFD, "有新用户加入---$fd\n");
+    }
+
+/*    $serv->tick(2000, function() use ($serv, $fd) {
         $msg = "这是一条定时消息". time() ."\n";
         echo $msg;
-        //$serv->send($fd, $msg);
-
-        foreach($serv->connections as $tempFD)
-        {
-            $serv->send($tempFD,"有新用户加入---1 for apple\n");
-        }
-
-    });
+        $serv->send($fd, $msg);
+    });*/
 });
 
 
